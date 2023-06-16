@@ -1,77 +1,77 @@
-<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
-<?php 
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-// SISTEMA DE LOGIN WEB	EM PHP	//
-// Sem uso de bancos de dados
-// KWEB.SYS 1.0
-// Kouback_TR_
-// https://twitter.com/Kouback_TR_
-// http://koubacktr.com
-//								//
-
-
-
-
-// Configurando variaveis para nosso sistema
-
-$usuario = "admin"; // USUARIO DEFINIDO
-$senha = "admin";   // SENHA PARA USUARIO DEFINIDO
-date_default_timezone_set('Brazil/East'); // DATA
-$dia = date('d'); 
-switch (date("m")) {
-        case "01":    $mes = Janeiro;     break;
-        case "02":    $mes = Fevereiro;   break;
-        case "03":    $mes = Março;       break;
-        case "04":    $mes = Abril;       break;
-        case "05":    $mes = Maio;        break;
-        case "06":    $mes = Junho;       break;
-        case "07":    $mes = Julho;       break;
-        case "08":    $mes = Agosto;      break;
-        case "09":    $mes = Setembro;    break;
-        case "10":    $mes = Outubro;     break;
-        case "11":    $mes = Novembro;    break;
-        case "12":    $mes = Dezembro;    break; 
- }
-$ano = date('y');
-$ip = getenv('REMOTE_ADDR'); // IP DO USUARIO
-
-// Corpo da pagina de login
-
-print"<center><font type=Arial size=4 color=#FF0000><b>Bem vindo ao KWEB.SYS 1.0</b></font></center>";
-print"<b>Hoje é $dia de $mes de 20$ano<br></b>";
-print"Seu endereço IP é: <b>$ip </b><br>";
-print"
-<html>
-<body bgcolor=#00FFF0>
 <head>
-<br>
-<br>
-<form method='post' action='?acao=logar'>
-<br>
-<center><font color=#000000>Usuario: <input type=text name=usuario></input></center></pre>
-<center><font color=#000000>Senha: <input type=password name=senha></input></center></pre>
-<center><input type=submit value='Login'></input></center>
-</form>
+  <meta charset="UTF-8">
+  <meta name="copyright" content="Hostel Bela Vista">
+  <meta name="language" content="pt-BR">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="imagens/pinhao2.png" />
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <title>Reservas - Pousada</title>
+</head>
+
+<body>
+<form action="enviar.html" method="post" name="form">
+  <header>
+    <h1>Hostel Bela Vista</h1>
+    <nav>
+      <ul>
+        
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <article>
+      <section>
+        <h2>Reservas e Contatos</h2>
+
+        <h3>Horários de check-in e check-out</h3>
+        <ul>
+          <li>Entrada (check-in): 09:00 - 00:00 horas</li>
+          <li>Saída (check-out): 09:00 - 00:00 horas </li>
+        </ul>
+
+        <h3>Telefones</h3>
+        <ul>
+          <li>+55 98 3286-1367 (Fixo)</li>
+          <li>+55 98 8715 1534 (Vivo) </li>
+          <li>+55 98 8152 7868 (Tim)</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Entre em contato</h2>
+        <form>
+         
+          <fieldset>
+            <legend>2. Dados Pessoais</legend>
+            <label for="idnome">Nome:<input type="text" name="nome" id="nome"  required /></label>
+            <label for="idtel">Telefone:<input type="tel" name="telefone" id="telefone"  size="13" required /></label>
+            <label for="idemail">Email:<input type="email" name="email" id="email" name="email_addr" required /></label>
+          </fieldset>
+
+          <fieldset>
+            <legend>3. Dados da Reserva</legend>
+            <label for="identrada">Data Entrada:<input type="date" name="entrada" id="entrada" size="6"  placeholder="ddmmaaaa" required /></label>
+            <label for="idsaida">Data Saida:<input type="date" name="saida" id="saida" size="6"  placeholder="ddmmaaaa"required /></label><br>
+            <label for="idadultos">Adultos:<input type="number" name="adultos" id="adultos"  size="2" min="1"  required /></label>
+            <label for="idcriancas">Crianças:<input type="number" name="criancas" id="criancas" size="2" min="0" required /></label>
+
+          </fieldset>
+          
+          <button type="submit" value="Enviar">Enviar</button>
+        </form>
+
+      </section>
+    </article> 
+  </main>
+      <aside class="contrato">
+
+        
+  <footer>
+    <address>Avenida Beira Mar, 330; Centro; Sao Luis; MA | Telefones: +55 54 3286-1367 &middot; +55 54 9219 0906 (Claro) &middot; +55 54 8152 7868 (Tim). </address>
+  </footer>
 </body>
-</html>";
 
-// AUTENTICANDO O USUARIO //
-if($_POST['acao'] == "$logar"){
-
-if($_POST['usuario'] == "$usuario"){ 
-if($_POST['senha'] == "$senha"){
-
-// AQUI FICARA TODO NOSSO SISTEMA DE ADMINISTRAÇÃO //
-print"<b><br><br>";
-print"<br>Se você está vendo essa mensagem é porque o sistema funcionou<br>";
-print"Aqui você pode inserir dados de seu interesse<br>";
-print"seja dados pessoais ou scripts de administração para seu site, como upload edição de noticias etc...</b>";
-
-
-	
-}
-}
-
-}
-
-?>	
+</html>

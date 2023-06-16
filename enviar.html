@@ -1,0 +1,36 @@
+<?
+
+# alterar a variavel abaixo colocando o seu email
+
+$destinatario = "ronald28int@gmail.com";
+
+$nome = $_REQUEST['nome'];
+$email = $_REQUEST['email'];
+$telefone = $_REQUEST['telefone'];
+$entrada = $_REQUEST['entrada'];
+$saida = $_REQUEST['saida'];
+$adultos = $_REQUEST['adultos'];
+$criancas = $_REQUEST['criancas'];
+
+ // monta o e-mail na variavel $body
+
+$body = "===================================" . "\n";
+$body = $body . "FALE CONOSCO - TESTE COMPROVATIVO" . "\n";
+$body = $body . "===================================" . "\n\n";
+$body = $body . "Nome: " . $nome . "\n";
+$body = $body . "Email: " . $email . "\n";
+$body = $body . "Telefone: " . $telefone . "\n\n";
+$body = $body . "Data Entrada: " . $entrada . "\n\n";
+$body = $body . "Data Saida: " . $saida . "\n\n";
+$body = $body . "Adultos: " . $adultos . "\n\n";
+$body = $body . "Crianças: " . $crianças: . "\n\n";
+$body = $body . "===================================" . "\n";
+
+// envia o email
+mail($destinatario, $assunto , $body, "From: $email\r\n");
+
+// redireciona para a página de obrigado
+header("location:obrigado.htm");
+
+
+?>
