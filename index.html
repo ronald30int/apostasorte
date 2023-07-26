@@ -131,13 +131,7 @@
       // Abrir o link no WhatsApp
       window.open(linkWhatsApp);
     
-      clickCounter++;
-
-      if (clickCounter >= 10) {
-        document.getElementById("reservarBtn").disabled = true;
-      }
     }
-  }
 
     // Associar o evento de clique ao botão de reserva
     document.getElementById("reservarBtn").addEventListener("click", enviarReservaWhatsApp);
