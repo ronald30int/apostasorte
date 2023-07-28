@@ -79,6 +79,7 @@
       <select id="hotelSelect">
         <option value="Casal">Casal</option>
         <option value="Solteiro">Solteiro</option>
+        <option value="Outros">Outros</option>
         <!-- Adicione mais opções de hotéis aqui -->
       </select>
     </section>
@@ -120,6 +121,7 @@
       const guests = document.getElementById("guests").value;
       const name = document.getElementById("name").value;
       const email = document.getElementById("email").value;
+
 
       // Montar a mensagem com os detalhes da reserva
       const mensagem = `Olá, gostaria de fazer uma reserva%0A%0AHostel: ${hotel}%0AData de Check-in: ${checkIn}%0AData de Check-out: ${checkOut}%0ANúmero de hóspedes: ${guests}%0ANome: ${name}%0ACelular: ${email}`;
