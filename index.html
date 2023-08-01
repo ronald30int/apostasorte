@@ -1,142 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HOSTEL BELA VISTA</title>
+  <title>Roleta de Prêmios - Boa Sorte!</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      line-height: 1.6;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      background-color: #333;
-      color: #fff;
       text-align: center;
-      padding: 1rem 0;
     }
-
-    main {
-      padding: 1rem;
+    #roulette {
+      width: 300px;
+      height: 300px;
+      border: 2px solid black;
+      border-radius: 50%;
+      position: relative;
+      margin: 20px auto;
+      overflow: hidden;
+      background-image: url('roleta.webp');
+      background-size: cover;
+      background-position: center;
     }
-
-    section {
-      margin-bottom: 1rem;
+    #pointer {
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 20px solid red;
+      position: absolute;
+      bottom: 5px;
+      left: calc(50% - 10px);
+      transform-origin: center bottom;
+      transform: rotate(0deg);
     }
-
-    label {
-      display: block;
-      font-weight: bold;
-      margin-bottom: 0.5rem;
-    }
-
-    input,
-    select {
-      width: 100%;
-      padding: 0.5rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-
     button {
-      background-color: #333;
-      color: #fff;
-      border: none;
-      padding: 1rem 2rem;
-      font-size: 1rem;
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
       cursor: pointer;
-      border-radius: 4px;
-    }
-
-    footer {
-      background-color: #333;
-      color: #fff;
-      text-align: center;
-      padding: 1rem 0;
-    }
-
-    @media (min-width: 768px) {
-      main {
-        max-width: 500px;
-        margin: 0 auto;
-      }
     }
   </style>
 </head>
 <body>
-
-  <header>
-    <h1>HOSTEL BELA VISTA</h1>
-  </header>
-
-  <main>
-<section>
-      <h2>Selecione o Quarto</h2>
-      <select id="hotelSelect">
-        <option value="Casal">Casal</option>
-        <option value="Solteiro">Solteiro</option>
-        <option value="Outros">Outros</option>
-        <!-- Adicione mais opções de hotéis aqui -->
-      </select>
-    </section>
-
-    <section>
-      <h2>Detalhes da Reserva</h2>
-      <label for="checkIn">Check-in:</label>
-      <input type="date" id="checkIn">
-
-      <label for="checkOut">Check-out:</label>
-      <input type="date" id="checkOut">
-
-      <label for="guests">Número de hóspedes:</label>
-      <input type="number" id="guests" min="1" max="10" value="1">
-    </section>
-
-    <section>
-      <h2>Detalhes de Contato</h2>
-      <label for="name">Nome:</label>
-      <input type="text" id="name">
-
-      <label for="email">Celular:</label>
-      <input type="email" id="email">
-    </section>
-
-    <button type="submit" id="reservarBtn">Reservar</button>
-  </main>
-
-  <footer>
-    <p>&copy; 2023 Reserva de Hotel</p>
-  </footer>
+  <h1>Roleta de Prêmios - Boa Sorte!</h1>
+  <div id="roulette">
+    <div id="pointer"></div>
+  </div>
+  <button onclick="spin()">Girar</button>
 
   <script>
-    // Função para criar o link do WhatsApp com os dados da reserva
-    function enviarReservaWhatsApp() {
-      const hotel = document.getElementById("hotelSelect").value;
-      const checkIn = document.getElementById("checkIn").value;
-      const checkOut = document.getElementById("checkOut").value;
-      const guests = document.getElementById("guests").value;
-      const name = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
+    let currentDegree = 0;
+    const prizes = [
+      "Prêmio 1",
+      "Prêmio 2",
+      "Prêmio 3",
+      "Prêmio 4",
+      "Prêmio 5",
+      "Prêmio 6",
+      "Prêmio 7",
+      "Prêmio 8",
+    ];
 
+    function spin() {
+      const randomDegree = 720 + Math.floor(Math.random() * 3600); // Random number of degrees to rotate
+      const prizeIndex = Math.floor(randomDegree / 360) % prizes.length;
+      const extraRotations = Math.floor(Math.random() * 3) + 3; // Extra rotations to make the result more exciting
 
-      // Montar a mensagem com os detalhes da reserva
-      const mensagem = `Olá, gostaria de fazer uma reserva%0A%0AHostel: ${hotel}%0AData de Check-in: ${checkIn}%0AData de Check-out: ${checkOut}%0ANúmero de hóspedes: ${guests}%0ANome: ${name}%0ACelular: ${email}`;
+      currentDegree += randomDegree + 360 * extraRotations;
 
-      // Criar o link do WhatsApp com a mensagem
-            const linkWhatsApp = `https://api.whatsapp.com/send?phone=98987151534&text=${mensagem}`;
+      document.getElementById("pointer").style.transition = "transform 3s ease-out";
+      document.getElementById("pointer").style.transform = `rotate(${currentDegree}deg)`;
 
-
-      // Abrir o link no WhatsApp
-      window.open(linkWhatsApp);
-    
+      setTimeout(() => {
+        alert(`Parabéns! Você ganhou: ${prizes[prizeIndex]}`);
+      }, 3500); // Wait for the animation to finish (3s) plus a little buffer
     }
-
-    // Associar o evento de clique ao botão de reserva
-    document.getElementById("reservarBtn").addEventListener("click", enviarReservaWhatsApp);
   </script>
 </body>
 </html>
