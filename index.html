@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gerador de Numero NFCE</title>
+    <script>
+        function gerarNumero() {
+            var numeroBase = "21230803995515004154651670000648";
+            var caracteresRestantes = 12;
+            
+            for (var i = 0; i < caracteresRestantes; i++) {
+                var digitoAleatorio = Math.floor(Math.random() * 10);
+                numeroBase += digitoAleatorio;
+            }
+            
+            document.getElementById("numeroGerado").textContent = numeroBase;
+        }
+    </script>
+</head>
+<body>
+    <h1>Gerador de Numero NFCE</h1>
+    <button onclick="gerarNumero()">Gerar Número NFCE</button>
+    <p id="numeroGerado"></p>
+</body>
+</html>
